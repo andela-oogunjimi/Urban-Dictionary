@@ -2,7 +2,8 @@
 
 namespace League\UrbanDictionary;
 
-use League\DataInterface;
+use League\UrbanDictionary\DataInterface;
+use \Exception;
 
 class Database implements DataInterface
 {
@@ -10,18 +11,26 @@ class Database implements DataInterface
 
     private static $index = -1;
 
-    public static function create(string $slang, string $description, string $sampleSentence)
+    private static function search($slang)
     {
-        if (count(search($slang)) > 0) {
+        $lowerCaseSlang = strtolower($slang);
+        return array_filter(self::$data, function ($value) use ($lowerCaseSlang) {
+            return $value["slang"] == $lowerCaseSlang;
+        });
+    }
+
+    public static function create($slang, $description, $sampleSentence)
+    {
+        if (count(self::search($slang)) > 0) {
             throw new Exception("Error Processing Request", 1);
         } else {
-            array_push($this->data, [“slang” => strtolower($slang), “description” => $description, “sample-sentence” => $sampleSentence]);
+            array_push(self::$data, ["slang" => strtolower($slang), "description" => $description, "sample-sentence" => $sampleSentence]);
         }
     }
 
-    public static function read(string $slang)
+    public static function read($slang)
     {
-        $records = search($slang);
+        $records = self::search($slang);
         if (count($records) > 0) {
             return current($records);
         } else {
@@ -29,46 +38,45 @@ class Database implements DataInterface
         }
     }
 
-    public static function update(string $slang, string $description, string $sampleSentence)
+    public static function preUpdate($slang)
     {
-        if (array_key_exists($this->index, $this->data)) {
-            $this->data[$this->index]["slang"] = strtolower($slang);
-            $this->data[$this->index]["description"] = $description;
-            $this->data[$this->index]["sample-Sentence"] = $sampleSentence;
-            $this->index = -1;
+        self::$index = -1;
+        $records = self::search($slang);
+        if (count($records) > 0) {
+            self::$index = key($records);
+        }
+    }
+
+    public static function update($slang, $description, $sampleSentence)
+    {
+        if (array_key_exists(self::$index, self::$data)) {
+            self::$data[self::$index]["slang"] = strtolower($slang);
+            self::$data[self::$index]["description"] = $description;
+            self::$data[self::$index]["sample-sentence"] = $sampleSentence;
+            self::$index = -1;
         } else {
             throw new Exception("Error Processing Request", 1);
         }
     }
 
-    public static function delete(string $slang)
+    public static function delete($slang)
     {
-        $records = search($slang);
+        $records = self::search($slang);
         if (count($records) > 0) {
-            $this->data = array_splice($this->data, key($records), 1);
+            array_splice(self::$data, key($records), 1);
         } else {
             throw new Exception("Error Processing Request", 1);
         }
-    }
-
-    public static function preUpdate(string $slang)
-    {
-        $records = search($slang);
-        if (count($records) > 0) {
-            $this->index = key($records);
-        }
-    }
-
-    private function search(string $slang)
-    {
-        $lowerCaseSlang = strtolower($slang);
-        return array_filter($this->data, function ($value) use ($lowerCaseSlang) {
-            return $value["slang"] == $lowerCaseSlang;
-        });
     }
 
     public static function getAll()
     {
-        return $this->data;
+        return self::$data;
+    }
+
+    public static function clear()
+    {
+        self::$data = array();
+        self::$index = -1;
     }
 }

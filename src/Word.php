@@ -2,15 +2,15 @@
 
 namespace League\UrbanDictionary;
 
-class Slang
+class Word
 {
     public $slang;
     public $description;
     public $sampleSentence;
 
-    public function __construct(sting $slang, string $description,string $sampleSentence)
+    public function __construct($slang, $description, $sampleSentence)
     {
-        $this->slang = $slang;
+        $this->slang = strtolower($slang);
         $this->description = $description;
         $this->sampleSentence = $sampleSentence;
     }

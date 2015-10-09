@@ -2,9 +2,9 @@
 
 namespace League\UrbanDictionary;
 
-class WordRank
+class Rank
 {
-    public static function rank(string $string)
+    public static function execute($string)
     {
         $array = preg_split("(\s)", preg_replace("([^\w\s\-\'])", "", strtolower($string)));
         $result = array();
