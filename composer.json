@@ -1,11 +1,11 @@
 {
-    "name": "league/urban-dictionary",
+    "name": "codesoft/urban-dictionary",
     "description": "Make your dictionary of slangs.",
     "keywords": [
-        "league",
+        "codesoft",
         "urban-dictionary"
     ],
-    "homepage": "https://github.com/andela-oogunjimi/Urban-Dictionary",
+    "homepage": "https://github.com/andela-oogunjimi/urban-dictionary",
     "license": "MIT",
     "authors": [
         {
@@ -32,5 +32,5 @@
     },
     "scripts": {
         "test": "phpunit"
-    }
+    },
 }
