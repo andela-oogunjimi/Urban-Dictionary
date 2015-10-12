@@ -1,0 +1,42 @@
+{
+    "name": "codesoft/urban-dictionary",
+    "description": "Make your dictionary of slangs.",
+    "keywords": [
+        "codesoft",
+        "urban-dictionary"
+    ],
+    "homepage": "https://github.com/andela-oogunjimi/urban-dictionary",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ogunjimi Opeyemi Abiodun",
+            "email": "opeyemi.ogunjimi@andela.com",
+            "role": "Software Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=5.6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "5.*",
+        "scrutinizer/ocular": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "League\\UrbanDictionary\\":"src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "League\\UrbanDictionary\\Tests\\":"tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
