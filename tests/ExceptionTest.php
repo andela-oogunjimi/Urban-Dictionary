@@ -2,7 +2,7 @@
 
 namespace League\UrbanDictionary\Test;
 
-use League\UrbanDictionary\Database;
+use League\UrbanDictionary\Dictionary;
 use League\UrbanDictionary\Rank;
 use League\UrbanDictionary\Word;
 use \stdClass;
@@ -12,73 +12,73 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Exception
      */
-    public function testDatabaseCreateSlangArgException()
+    public function testDictionaryCreateSlangArgException()
     {
-        Database::create(0, "string", "string");
+        Dictionary::create(0, "string", "string");
     }
 
     /**
      * @expectedException Exception
      */
-    public function testDatabaseCreateDescriptionArgException()
+    public function testDictionaryCreateDescriptionArgException()
     {
-        Database::create("string", new stdClass(), "string");
+        Dictionary::create("string", new stdClass(), "string");
     }
 
     /**
      * @expectedException Exception
      */
-    public function testDatabaseCreateSampleSentenceArgException()
+    public function testDictionaryCreateSampleSentenceArgException()
     {
-        Database::create("string", "string", false);
+        Dictionary::create("string", "string", false);
     }
 
     /**
      * @expectedException Exception
      */
-    public function testDatabaseReadArgException()
+    public function testDictionaryReadArgException()
     {
-        Database::read(false);
+        Dictionary::read(false);
     }
 
     /**
      * @expectedException Exception
      */
-    public function testDatabasePreUpdateArgException()
+    public function testDictionaryPreUpdateArgException()
     {
-        Database::preUpdate(false);
+        Dictionary::preUpdate(false);
     }
 
     /**
      * @expectedException Exception
      */
-    public function testDatabaseUpdateSlangArgException()
+    public function testDictionaryUpdateSlangArgException()
     {
-        Database::update(0, "string", "string");
+        Dictionary::update(0, "string", "string");
     }
 
     /**
      * @expectedException Exception
      */
-    public function testDatabaseUpdateDescriptionArgException()
+    public function testDictionaryUpdateDescriptionArgException()
     {
-        Database::update("string", new stdClass(), "string");
+        Dictionary::update("string", new stdClass(), "string");
     }
 
     /**
      * @expectedException Exception
      */
-    public function testDatabaseUpdateSampleSentenceArgException()
+    public function testDictionaryUpdateSampleSentenceArgException()
     {
-        Database::update("string", "string", false);
+        Dictionary::update("string", "string", false);
     }
 
     /**
      * @expectedException Exception
      */
-    public function testDatabaseDeleteArgException()
+    public function testDictionaryDeleteArgException()
     {
-        Database::delete(new stdClass());
+        Dictionary::delete(new stdClass());
     }
 
     /**
@@ -94,7 +94,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testWordConstructorSlangArgException()
     {
-        $word = new Word(0, "string", "string");
+        $word = new Word(new Dictionary(), 0, "string", "string");
     }
 
     /**
@@ -102,7 +102,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testWordConstructorDescriptionArgException()
     {
-        $word = new Word("string", new stdClass(), "string");
+        $word = new Word(new Dictionary(), "string", new stdClass(), "string");
     }
 
     /**
@@ -110,6 +110,6 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testWordConstructorSampleSentenceArgException()
     {
-        $word = new Word("string", "string", false);
+        $word = new Word(new Dictionary(), "string", "string", false);
     }
 }
