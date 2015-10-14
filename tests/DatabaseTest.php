@@ -124,6 +124,7 @@ class DatabaseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     *
      * @expectedException Exception
      */
     public function testDelete()
@@ -148,8 +149,7 @@ class DatabaseTest extends \PHPUnit_Framework_TestCase
                         ["slang"=>strtolower($slangs[1]), "description"=>$descriptions[1], "sample-sentence"=>$sampleSentences[1]]
                     ];
         $this->assertEquals($expected, Database::getAll(), "Error: delete unsuccessful");
-        # expected
-        Database::delete($slangs[3]);
+        Database::delete($slangs[3]); #exception
     }
 
     public function testGetAll()

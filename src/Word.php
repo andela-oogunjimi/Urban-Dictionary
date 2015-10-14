@@ -2,6 +2,8 @@
 
 namespace League\UrbanDictionary;
 
+use \Exception;
+
 class Word
 {
     /**  @var string The slang spelt out */
@@ -19,6 +21,15 @@ class Word
      */
     public function __construct($slang, $description, $sampleSentence)
     {
+        if (!is_string($slang)) {
+            throw new Exception("The slang argument is not a string");
+        }
+        if (!is_string($description)) {
+            throw new Exception("The description argument is not a string");
+        }
+        if (!is_string($sampleSentence)) {
+            throw new Exception("The sampleSentence argument is not a string ");
+        }
         $this->slang = strtolower($slang);
         $this->description = $description;
         $this->sampleSentence = $sampleSentence;

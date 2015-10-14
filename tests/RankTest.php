@@ -6,9 +6,6 @@ use League\UrbanDictionary\Rank;
 
 class RankTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * Test that true does in fact equal true
-     */
     public function testExecute()
     {
         $string = "Andrei: Prosper, Have you finished the curriculum?.\nProsper: Yes.\nAndrei: Tight, Tight, Tight!!!";
