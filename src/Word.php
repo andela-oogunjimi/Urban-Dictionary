@@ -2,6 +2,7 @@
 
 namespace League\UrbanDictionary;
 
+use League\UrbanDictionary\Dictionary;
 use \Exception;
 
 class Word
@@ -15,11 +16,12 @@ class Word
 
     /**
      * The constructor method for a new Word. The method creates a new instance of Word.
-     * @param string $slang          The slang/word
-     * @param string $description    The description of the slang/word
-     * @param string $sampleSentence Sentence examples where the slang/word is used
+     * @param DictionaryInterface $db             The dictionary where the word is created.
+     * @param string              $slang          The slang/word
+     * @param string              $description    The description of the slang/word
+     * @param string              $sampleSentence Sentence examples where the slang/word is used
      */
-    public function __construct($slang, $description, $sampleSentence)
+    public function __construct(DictionaryInterface $dictionary, $slang, $description, $sampleSentence)
     {
         if (!is_string($slang)) {
             throw new Exception("The slang argument is not a string");
@@ -33,5 +35,6 @@ class Word
         $this->slang = strtolower($slang);
         $this->description = $description;
         $this->sampleSentence = $sampleSentence;
+        $dictionary->insert($this);
     }
 }
