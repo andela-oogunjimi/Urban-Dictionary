@@ -35,8 +35,17 @@ class Database implements DataInterface
      */
     public static function create($slang, $description, $sampleSentence)
     {
+        if (!is_string($slang)) {
+            throw new Exception("The slang argument is not a string");
+        }
+        if (!is_string($description)) {
+            throw new Exception("The description argument is not a string");
+        }
+        if (!is_string($sampleSentence)) {
+            throw new Exception("The sampleSentence argument is not a string ");
+        }
         if (count(self::search($slang)) > 0) {
-            throw new Exception("Error Processing Request", 1);
+            throw new Exception("The slang already exists in the dictionary.");
         } else {
             array_push(self::$data, ["slang" => strtolower($slang), "description" => $description, "sample-sentence" => $sampleSentence]);
         }
@@ -49,11 +58,14 @@ class Database implements DataInterface
      */
     public static function read($slang)
     {
+        if (!is_string($slang)) {
+            throw new Exception("The slang argument is not a string.");
+        }
         $records = self::search($slang);
         if (count($records) > 0) {
             return current($records);
         } else {
-            throw new Exception("Error Processing Request", 1);
+            throw new Exception("The slang is not in the dictionary.");
         }
     }
 
@@ -65,6 +77,9 @@ class Database implements DataInterface
      */
     public static function preUpdate($slang)
     {
+        if (!is_string($slang)) {
+            throw new Exception("The slang argument is not a string.");
+        }
         self::$index = -1;
         $records = self::search($slang);
         if (count($records) > 0) {
@@ -81,13 +96,22 @@ class Database implements DataInterface
      */
     public static function update($slang, $description, $sampleSentence)
     {
+        if (!is_string($slang)) {
+            throw new Exception("The slang argument is not a string");
+        }
+        if (!is_string($description)) {
+            throw new Exception("The description argument is not a string");
+        }
+        if (!is_string($sampleSentence)) {
+            throw new Exception("The sampleSentence argument is not a string ");
+        }
         if (array_key_exists(self::$index, self::$data)) {
             self::$data[self::$index]["slang"] = strtolower($slang);
             self::$data[self::$index]["description"] = $description;
             self::$data[self::$index]["sample-sentence"] = $sampleSentence;
             self::$index = -1;
         } else {
-            throw new Exception("Error Processing Request", 1);
+            throw new Exception("The slang is not in the dictionary.");
         }
     }
 
@@ -98,11 +122,14 @@ class Database implements DataInterface
      */
     public static function delete($slang)
     {
+        if (!is_string($slang)) {
+            throw new Exception("The slang argument is not a string");
+        }
         $records = self::search($slang);
         if (count($records) > 0) {
             array_splice(self::$data, key($records), 1);
         } else {
-            throw new Exception("Error Processing Request", 1);
+            throw new Exception("The slang is not in the dictionary.");
         }
     }
 

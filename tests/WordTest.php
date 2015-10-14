@@ -6,10 +6,6 @@ use League\UrbanDictionary\Word;
 
 class WordTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * Test that true does in fact equal true
-     */
-
     public function testWordConstructor()
     {
         $_slang = "Tight";
