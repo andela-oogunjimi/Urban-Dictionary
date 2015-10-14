@@ -3,6 +3,7 @@
 namespace League\UrbanDictionary\Test;
 
 use League\UrbanDictionary\Word;
+use League\UrbanDictionary\Dictionary;
 
 class WordTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,7 +12,7 @@ class WordTest extends \PHPUnit_Framework_TestCase
         $_slang = "Tight";
         $_description = "When someone performs an awesome task";
         $_sampleSentence = "Andrei: Prosper, Have you finished the curriculum?.\nProsper: Yes.\nAndrei: Tight, Tight, Tight!!!";
-        $word = new Word($_slang, $_description, $_sampleSentence);
+        $word = new Word(new Dictionary(), $_slang, $_description, $_sampleSentence);
         $this->assertEquals("object", gettype($word), "Error: Slang is not an object.");
         $this->assertInstanceOf("League\UrbanDictionary\Word", $word, "Error: object is not an instance of Slang.");
         $this->assertobjectHasAttribute("slang", $word, "Error: object has no 'slang' attribute.");
