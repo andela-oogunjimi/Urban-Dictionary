@@ -2,6 +2,8 @@
 
 namespace League\UrbanDictionary;
 
+use \Exception;
+
 class Rank
 {
     /**
@@ -11,6 +13,9 @@ class Rank
      */
     public static function execute($string)
     {
+        if (!is_string($string)) {
+            throw new Exception("The argument is not a string.");
+        }
         $array = preg_split("(\s)", preg_replace("([^\w\s\-\'])", "", strtolower($string)));
         $result = array();
         foreach ($array as $value) {
