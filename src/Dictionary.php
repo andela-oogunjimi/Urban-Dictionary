@@ -2,10 +2,11 @@
 
 namespace League\UrbanDictionary;
 
-use League\UrbanDictionary\DataInterface;
+use League\UrbanDictionary\DictionaryInterface;
+use League\UrbanDictionary\Word;
 use \Exception;
 
-class Database implements DataInterface
+class Dictionary implements DictionaryInterface
 {
     /** @var array A two-dimensional array of arrays, each array representing a word/slang */
     private static $data = array();
@@ -49,6 +50,15 @@ class Database implements DataInterface
         } else {
             array_push(self::$data, ["slang" => strtolower($slang), "description" => $description, "sample-sentence" => $sampleSentence]);
         }
+    }
+
+    /**
+     * [create description]
+     * @param  Word   $word The word to be placed in the dictionary.
+     */
+    public function insert(Word $word)
+    {
+        self::create($word->slang, $word->description, $word->sampleSentence);
     }
 
     /**
