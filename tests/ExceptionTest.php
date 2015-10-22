@@ -2,10 +2,10 @@
 
 namespace League\UrbanDictionary\Test;
 
+use stdClass;
 use League\UrbanDictionary\Dictionary;
 use League\UrbanDictionary\Rank;
 use League\UrbanDictionary\Word;
-use \stdClass;
 
 class ExceptionTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,7 +14,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryCreateSlangArgException()
     {
-        Dictionary::create(0, "string", "string");
+        Dictionary::create(0, 'string', 'string');
     }
 
     /**
@@ -22,7 +22,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryCreateDescriptionArgException()
     {
-        Dictionary::create("string", new stdClass(), "string");
+        Dictionary::create('string', new stdClass(), 'string');
     }
 
     /**
@@ -30,7 +30,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryCreateSampleSentenceArgException()
     {
-        Dictionary::create("string", "string", false);
+        Dictionary::create('string', 'string', false);
     }
 
     /**
@@ -54,7 +54,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryUpdateSlangArgException()
     {
-        Dictionary::update(0, "string", "string");
+        Dictionary::update(0, 'string', 'string');
     }
 
     /**
@@ -62,7 +62,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryUpdateDescriptionArgException()
     {
-        Dictionary::update("string", new stdClass(), "string");
+        Dictionary::update('string', new stdClass(), 'string');
     }
 
     /**
@@ -70,7 +70,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryUpdateSampleSentenceArgException()
     {
-        Dictionary::update("string", "string", false);
+        Dictionary::update('string', 'string', false);
     }
 
     /**
@@ -94,7 +94,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testWordConstructorSlangArgException()
     {
-        $word = new Word(new Dictionary(), 0, "string", "string");
+        $word = new Word(new Dictionary(), 0, 'string', 'string');
     }
 
     /**
@@ -102,7 +102,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testWordConstructorDescriptionArgException()
     {
-        $word = new Word(new Dictionary(), "string", new stdClass(), "string");
+        $word = new Word(new Dictionary(), 'string', new stdClass(), 'string');
     }
 
     /**
@@ -110,6 +110,6 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testWordConstructorSampleSentenceArgException()
     {
-        $word = new Word(new Dictionary(), "string", "string", false);
+        $word = new Word(new Dictionary(), 'string', 'string', false);
     }
 }
