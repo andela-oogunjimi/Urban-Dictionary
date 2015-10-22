@@ -16,13 +16,14 @@ class Rank
     public static function execute($string)
     {
         if (!is_string($string)) {
-            throw new InvalidArgumentException("A string is expected as the argument. The argument is not a string.");
+            throw new InvalidArgumentException('A string is expected as the argument. The argument is not a string.');
         }
-        $array = preg_split("(\s)", preg_replace("([^\w\s\-\'])", "", strtolower($string)));
-        $result = array();
+        $array = preg_split("(\s)", preg_replace("([^\w\s\-\'])", '', strtolower($string)));
+        $result = [];
         foreach ($array as $value) {
-            $result[$value] = (array_key_exists($value, $result)) ? $result[$value] + 1 : 1 ;
+            $result[$value] = (array_key_exists($value, $result)) ? $result[$value] + 1 : 1;
         }
+
         return $result;
     }
 }
