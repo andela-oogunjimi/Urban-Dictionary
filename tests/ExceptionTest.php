@@ -44,9 +44,9 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Exception
      */
-    public function testDictionaryPreUpdateArgException()
+    public function testDictionarySelectArgException()
     {
-        Dictionary::preUpdate(false);
+        Dictionary::select(false);
     }
 
     /**
