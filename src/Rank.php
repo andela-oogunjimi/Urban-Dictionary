@@ -2,7 +2,7 @@
 
 namespace League\UrbanDictionary;
 
-use \Exception;
+use Exception;
 
 class Rank
 {
@@ -16,11 +16,13 @@ class Rank
         if (!is_string($string)) {
             throw new Exception("The argument is not a string.");
         }
+
         $array = preg_split("(\s)", preg_replace("([^\w\s\-\'])", "", strtolower($string)));
         $result = array();
         foreach ($array as $value) {
             $result[$value] = (array_key_exists($value, $result)) ? $result[$value] + 1 : 1 ;
         }
+
         return $result;
     }
 }
