@@ -43,7 +43,6 @@ If you discover any security related issues, please email opeyemi.ogunjimi@andel
 ## Credits
 
 - [Opeyemi Ogunjimi][link-author]
-- [All Contributors][link-contributors]
 
 ## License
 
