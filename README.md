@@ -3,7 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/badge/packagist-v1.0.0-orange.svg)](https://packagist.org/packages/codesoft/urban-dictionary)
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status](https://travis-ci.org/andela-oogunjimi/Urban-Dictionary.svg?branch=master)](https://travis-ci.org/andela-oogunjimi/Urban-Dictionary)
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
+[![Code Coverage](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/badges/coverage.png?b=andela-oogunjimi-patch-1)](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/?branch=andela-oogunjimi-patch-1)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/?branch=master)
 [![Total Downloads][ico-downloads]][link-downloads]
 
