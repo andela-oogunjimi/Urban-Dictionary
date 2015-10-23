@@ -3,12 +3,11 @@
 [![Latest Version on Packagist](https://img.shields.io/badge/packagist-v1.0.0-orange.svg)](https://packagist.org/packages/codesoft/urban-dictionary)
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status](https://travis-ci.org/andela-oogunjimi/Urban-Dictionary.svg?branch=master)](https://travis-ci.org/andela-oogunjimi/Urban-Dictionary)
-[![Code Coverage](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/badges/coverage.png?b=andela-oogunjimi-patch-1)](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/?branch=andela-oogunjimi-patch-1)
+[![Code Coverage](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/badges/coverage.png?b=andela-oogunjimi-patch-1)](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/?branch=master)
-[![Total Downloads][ico-downloads]][link-downloads]
 
 ###### CheckPoint 1/a; Urban-Dictionary Agnostic PHP Package
-The package enables the non-persistent storage of data. Specifically; slangs, their meanings and examples of sentences where they are used. Creating, reading, updating and deleting records of these slangs are also made possible by this package. Finally, the package can also rank words within sentences by the number of occurences of these words within the sentences. PSR-2 coding standard was adopted in writing the package. The PSR-4 autoloading convention was also adopted. 
+The package enables the non-persistent storage of data. Specifically; slangs, their meanings and examples of sentences where they are used. Creating, reading, updating and deleting records of these slangs are also made possible by this package. Finally, the package can also rank words within sentences by the number of occurences of these words within the sentences. PSR-2 coding standard was adopted in writing the package. The PSR-4 autoloading convention was also adopted.
 
 ## Install
 
@@ -23,23 +22,23 @@ $ composer require league/Urban-Dictionary
 ``` php
 <?php
     require "vendor/autoload.php";
-    
+
     use League/UrbanDictionary/Word;
     use League/UrbanDictionary/Dictionary;
     use League/UrbanDictionary/Rank;
-    
+
     $dictionary = new Dictionary();
     $_slang = 'Shit';
     $_description = 'Generic word ascribed to anything. Can also be use to express suprise.';
-    $_sampleSentence = 'He took all my shit. I saw that shit on tv. Shit is going down. This 
+    $_sampleSentence = 'He took all my shit. I saw that shit on tv. Shit is going down. This
                 shit is real. Shit!!!';
-    
+
     #Create a new instance of Word and insert a record for it in the dictionary.
-    $word = new Word($dictionary, $_slang, $_description, $_sampleSentence); 
-    
+    $word = new Word($dictionary, $_slang, $_description, $_sampleSentence);
+
     #Insert $_word, an instance of Word in the dictionary
     $dictionary->insert($_word);
-    
+
     /*
      The folowing arguments; $slang, $description, $sampleSentence are strings.
      The following methods below perform CRUD operations in the dictionary.
@@ -51,14 +50,14 @@ $ composer require league/Urban-Dictionary
     Dictionary::delete($slang);
     Dictionary::getAll()
     Dictionary::clear();
-    
-    $_sentences = “Andrei: Prosper, Have you finished the curriculum?. 
+
+    $_sentences = “Andrei: Prosper, Have you finished the curriculum?.
                   Prosper: Yes.
                   Andrei: Tight, Tight, Tight!!!”
-    
+
     $wordsRank = Rank::execute($_sentences);
     /*
-     $wordsRank = [“Tight” => 3, “Prosper” => 2, “Yes” => 1, “Have” => 1, “you” => 1, 
+     $wordsRank = [“Tight” => 3, “Prosper” => 2, “Yes” => 1, “Have” => 1, “you” => 1,
                     “finished” => 1, “the” => 1, “curriculum?” => 1];
     */
 ?>
