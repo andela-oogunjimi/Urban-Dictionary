@@ -1,4 +1,4 @@
- Urban-Dictionary
+# Urban-Dictionary
 
 [![Latest Version on Packagist](https://img.shields.io/badge/packagist-v1.0.0-orange.svg)](https://packagist.org/packages/codesoft/urban-dictionary)
 [![Software License][ico-license]](LICENSE.md)
