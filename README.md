@@ -7,6 +7,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/?branch=master)
 [![Total Downloads][ico-downloads]][link-downloads]
 
+###### CheckPoint 1/a Urban-Dictionary Agnostic PHP Package
 The package enables the non-persistent storage of data. Specifically; slangs, their meanings and examples of sentences where they are used. Creating, reading, updating and deleting records of these slangs are also made possible by this package. Finally, the package can also rank words within sentences by the number of occurences of these words within the sentences. PSR-2 coding standard was adopted in writing the package. The PSR-4 autoloading convention was also adopted. 
 
 ## Install
@@ -20,7 +21,9 @@ $ composer require league/Urban-Dictionary
 ## Usage
 
 ``` php
+<?php
 
+?>
 ```
 
 ## Change log
