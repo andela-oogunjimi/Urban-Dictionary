@@ -15,7 +15,7 @@ class Rank
      */
     public static function execute($string)
     {
-        if (!is_string($string)) {
+        if (! is_string($string)) {
             throw new InvalidArgumentException('A string is expected as the argument. The argument is not a string.');
         }
         $array = preg_split("(\s)", preg_replace("([^\w\s\-\'])", '', strtolower($string)));

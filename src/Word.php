@@ -37,13 +37,13 @@ class Word
      */
     public function __construct(DictionaryInterface $dictionary, $slang, $description, $sampleSentence)
     {
-        if (!is_string($slang)) {
+        if (! is_string($slang)) {
             throw new InvalidArgumentException('A string is expected as the second argument. The second argument is not a string.');
         }
-        if (!is_string($description)) {
+        if (! is_string($description)) {
             throw new InvalidArgumentException('A string is expected as the third argument. The third argument is not a string.');
         }
-        if (!is_string($sampleSentence)) {
+        if (! is_string($sampleSentence)) {
             throw new InvalidArgumentException('A string is expected as the fourth argument. The fourth argument is not a string.');
         }
         $this->slang = strtolower($slang);
