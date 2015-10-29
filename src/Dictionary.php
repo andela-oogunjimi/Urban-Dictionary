@@ -47,13 +47,13 @@ class Dictionary implements DictionaryInterface
      */
     public static function create($slang, $description, $sampleSentence)
     {
-        if (!is_string($slang)) {
+        if (! is_string($slang)) {
             throw new InvalidArgumentException('A string is expected as the first argument. The first argument is not a string.');
         }
-        if (!is_string($description)) {
+        if (! is_string($description)) {
             throw new InvalidArgumentException('A string is expected as the second argument. The second argument is not a string.');
         }
-        if (!is_string($sampleSentence)) {
+        if (! is_string($sampleSentence)) {
             throw new InvalidArgumentException('A string is expected as the third argument. The third argument is not a string.');
         }
         if (count(self::search($slang)) > 0) {
@@ -84,7 +84,7 @@ class Dictionary implements DictionaryInterface
      */
     public static function read($slang)
     {
-        if (!is_string($slang)) {
+        if (! is_string($slang)) {
             throw new InvalidArgumentException('A string is expected as the argument. The argument is not a string.');
         }
         $records = self::search($slang);
@@ -104,7 +104,7 @@ class Dictionary implements DictionaryInterface
      */
     public static function select($slang)
     {
-        if (!is_string($slang)) {
+        if (! is_string($slang)) {
             throw new InvalidArgumentException('A string is expected as the argument. The argument is not a string.');
         }
         self::$index = -1;
@@ -127,13 +127,13 @@ class Dictionary implements DictionaryInterface
      */
     public static function update($slang, $description, $sampleSentence)
     {
-        if (!is_string($slang)) {
+        if (! is_string($slang)) {
             throw new InvalidArgumentException('A string is expected as the first argument. The first argument is not a string.');
         }
-        if (!is_string($description)) {
+        if (! is_string($description)) {
             throw new InvalidArgumentException('A string is expected as the second argument. The second argument is not a string.');
         }
-        if (!is_string($sampleSentence)) {
+        if (! is_string($sampleSentence)) {
             throw new InvalidArgumentException('A string is expected as the third argument. The third argument is not a string.');
         }
         if (array_key_exists(self::$index, self::$data)) {
@@ -153,7 +153,7 @@ class Dictionary implements DictionaryInterface
      */
     public static function delete($slang)
     {
-        if (!is_string($slang)) {
+        if (! is_string($slang)) {
             throw new InvalidArgumentException('A string is expected as the argument. The argument is not a string.');
         }
         $records = self::search($slang);
