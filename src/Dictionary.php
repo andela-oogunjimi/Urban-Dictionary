@@ -21,20 +21,6 @@ class Dictionary
     private static $index = -1;
 
     /**
-     * $instance The object instantiation of League\UrbanDictionary\Dictionary
-     *
-     * @var object
-     */
-    private static $instance;
-
-    /**
-     * Private constructor for League\UrbanDictionary\Dictionary
-     */
-    private function __construct()
-    {
-    }
-
-    /**
      * This method finds a slang in the dictionary.
      *
      * @param string $slang The slang searched for in the dictionary.
@@ -109,6 +95,7 @@ class Dictionary
      */
     public static function select($slang)
     {
+        $_selected = false;
         self::$index = -1;
         if (! is_string($slang)) {
             throw new InvalidArgumentException('A string is expected as the argument. The argument is not a string.');
@@ -116,13 +103,11 @@ class Dictionary
         $records = self::search($slang);
         if (count($records) > 0) {
             self::$index = key($records);
+            $_selected = true;
         } else {
             throw new InvalidArgumentException('The slang is not in the dictionary.');
         }
-        if (empty(self::$instance)) {
-            self::$instance = new Dictionary();
-        }
-        return self::$instance;
+        return $_selected;
     }
 
     /**
@@ -134,7 +119,7 @@ class Dictionary
      *
      * @return void
      */
-    public function update($slang, $description, $sampleSentence)
+    public static function update($slang, $description, $sampleSentence)
     {
         $_updated = false;
         if (! is_string($slang)) {

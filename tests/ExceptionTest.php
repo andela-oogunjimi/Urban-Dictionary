@@ -9,12 +9,6 @@ use stdClass;
 
 class ExceptionTest extends \PHPUnit_Framework_TestCase
 {
-
-    protected function setUp()
-    {
-        Dictionary::add("Tight", "When someone performs an awesome task", "Andrei: Prosper, Have you finished the curriculum?.\nProsper: Yes.\nAndrei: Tight, Tight, Tight!!!");
-    }
-
     /**
      * @expectedException InvalidArgumentException
      */
@@ -60,7 +54,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryUpdateSlangArgException()
     {
-        Dictionary::select("Tight")->update(0, 'string', 'string');
+        Dictionary::update(0, 'string', 'string');
     }
 
     /**
@@ -68,7 +62,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryUpdateDescriptionArgException()
     {
-        Dictionary::select("Tight")->update('string', new stdClass(), 'string');
+        Dictionary::update('string', new stdClass(), 'string');
     }
 
     /**
@@ -76,7 +70,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryUpdateSampleSentenceArgException()
     {
-        Dictionary::select("Tight")->update('string', 'string', false);
+        Dictionary::update('string', 'string', false);
     }
 
     /**

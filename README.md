@@ -32,10 +32,17 @@ $ composer require league/Urban-Dictionary
     */
     Dictionary::add($slang, $description, $sampleSentence);
     Dictionary::read($slang);
-    Dictionary::select($slang)->update($_slang, $_description, $_sampleSentence);
+    Dictionary::select($slang);
+    Dictionary::update($slang, $description, $sampleSentence);
     Dictionary::delete($slang);
     Dictionary::getAll();
     Dictionary::clear();
+
+    /*
+      To update a slang in the dictionary.First select it before passing in updated values.
+     */
+    Dictionary::select($slang);
+    Dictionary::update($slang, $description, $sampleSentence);
 
     $_sentences = “Andrei: Prosper, Have you finished the curriculum?.
                   Prosper: Yes.

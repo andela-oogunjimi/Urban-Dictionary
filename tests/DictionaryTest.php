@@ -3,13 +3,21 @@
 namespace League\UrbanDictionary\Test;
 
 use League\UrbanDictionary\Dictionary;
-use ReflectionClass;
 
 class DictionaryTest extends \PHPUnit_Framework_TestCase
 {
+    protected $data;
 
     protected function setUp()
     {
+        $this->data =   [
+                            [
+                                "slang" => "tight",
+                                "description" => "When someone performs an awesome task",
+                                "sample-sentence" => "Andrei: Prosper, Have you finished the curriculum?.\nProsper: Yes.\nAndrei: Tight, Tight, Tight!!!"
+                            ]
+                        ];
+        Dictionary::clear();
         Dictionary::add("Tight", "When someone performs an awesome task", "Andrei: Prosper, Have you finished the curriculum?.\nProsper: Yes.\nAndrei: Tight, Tight, Tight!!!");
     }
 
@@ -27,12 +35,7 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
      */
     public function testRead()
     {
-        $expected = [
-                        "slang" => "tight",
-                        "description" => "When someone performs an awesome task",
-                        "sample-sentence" => "Andrei: Prosper, Have you finished the curriculum?.\nProsper: Yes.\nAndrei: Tight, Tight, Tight!!!"
-                    ];
-        $this->assertEquals($expected, Dictionary::read("Tight"));
+        $this->assertEquals($this->data[0], Dictionary::read("Tight"));
         Dictionary::read("not-included"); #InvalidArgumentException
     }
 
@@ -41,16 +44,14 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
      */
     public function testSelect()
     {
-        assertType("League\UrbanDictionary\Dictionary", Dictionary::select("Tight"));
+        $this->assertTrue(Dictionary::select("Tight"));
         Dictionary::select("not-included"); #InvalidArgumentException
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testUpdate()
     {
-        $this->assertTrue(Dictionary::select("Tight")->update("Shit", "Generic word ascribed to anything. Can also be use to express suprise.", "He took all my shit. I saw that shit on tv. Shit is going down. This shit is real. Shit!!!"));
+        Dictionary::select("Tight");
+        $this->assertTrue(Dictionary::update("Shit", "Generic word ascribed to anything. Can also be use to express suprise.", "He took all my shit. I saw that shit on tv. Shit is going down. This shit is real. Shit!!!"));
     }
 
     /**
@@ -64,14 +65,7 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase
 
     public function testGetAll()
     {
-        $expected = [
-                        [
-                            "slang" => "tight",
-                            "description" => "When someone performs an awesome task",
-                            "sample-sentence" => "Andrei: Prosper, Have you finished the curriculum?.\nProsper: Yes.\nAndrei: Tight, Tight, Tight!!!"
-                        ]
-                    ];
-        $this->assertEquals($expected, Dictionary::getAll(), 'Error: unsuccessful getting all records.');
+        $this->assertEquals($this->data, Dictionary::getAll(), 'Error: unsuccessful getting all records.');
     }
 
     public function testClear()
