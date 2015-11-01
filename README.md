@@ -23,33 +23,26 @@ $ composer require league/Urban-Dictionary
 <?php
     require "vendor/autoload.php";
 
-    use League/UrbanDictionary/Word;
     use League/UrbanDictionary/Dictionary;
     use League/UrbanDictionary/Rank;
 
-    $dictionary = new Dictionary();
-    $_slang = 'Shit';
-    $_description = 'Generic word ascribed to anything. Can also be use to express suprise.';
-    $_sampleSentence = 'He took all my shit. I saw that shit on tv. Shit is going down. This
-                shit is real. Shit!!!';
-
-    #Create a new instance of Word and insert a record for it in the dictionary.
-    $word = new Word($dictionary, $_slang, $_description, $_sampleSentence);
-
-    #Insert $_word, an instance of Word in the dictionary
-    $dictionary->insert($_word);
-
     /*
-     The folowing arguments; $slang, $description, $sampleSentence are strings.
      The following methods below perform CRUD operations in the dictionary.
+     The arguments passed into the methods are strings.
     */
-    Dictionary::create($slang, $description, $sampleSentence);
+    Dictionary::add($slang, $description, $sampleSentence);
     Dictionary::read($slang);
     Dictionary::select($slang);
     Dictionary::update($slang, $description, $sampleSentence);
     Dictionary::delete($slang);
-    Dictionary::getAll()
+    Dictionary::getAll();
     Dictionary::clear();
+
+    /*
+      To update a slang in the dictionary.First select it before passing in updated values.
+     */
+    Dictionary::select($slang);
+    Dictionary::update($slang, $description, $sampleSentence);
 
     $_sentences = “Andrei: Prosper, Have you finished the curriculum?.
                   Prosper: Yes.
