@@ -63,6 +63,7 @@ class Dictionary
             array_push(self::$data, ['slang' => strtolower($slang), 'description' => $description, 'sample-sentence' => $sampleSentence]);
             $_added = true;
         }
+
         return $_added;
     }
 
@@ -107,6 +108,7 @@ class Dictionary
         } else {
             throw new InvalidArgumentException('The slang is not in the dictionary.');
         }
+
         return $_selected;
     }
 
@@ -138,6 +140,7 @@ class Dictionary
             self::$index = -1;
             $_updated = true;
         }
+
         return $_updated;
     }
 
@@ -161,6 +164,7 @@ class Dictionary
         } else {
             throw new InvalidArgumentException('The slang is not in the dictionary.');
         }
+
         return $_deleted;
     }
 
