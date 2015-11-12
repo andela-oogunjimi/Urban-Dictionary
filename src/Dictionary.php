@@ -4,7 +4,7 @@ namespace League\UrbanDictionary;
 
 use InvalidArgumentException;
 
-class Dictionary implements DictionaryInterface
+class Dictionary
 {
     /**
      * $data The dictionary, a two-dimensional array of arrays, each array representing a slang.
@@ -45,8 +45,9 @@ class Dictionary implements DictionaryInterface
      *
      * @return void
      */
-    public static function create($slang, $description, $sampleSentence)
+    public static function add($slang, $description, $sampleSentence)
     {
+        $_added = false;
         if (! is_string($slang)) {
             throw new InvalidArgumentException('A string is expected as the first argument. The first argument is not a string.');
         }
@@ -60,19 +61,10 @@ class Dictionary implements DictionaryInterface
             throw new InvalidArgumentException('The slang already exists in the dictionary.');
         } else {
             array_push(self::$data, ['slang' => strtolower($slang), 'description' => $description, 'sample-sentence' => $sampleSentence]);
+            $_added = true;
         }
-    }
 
-    /**
-     * This method creates a record of a slang in the dictionary.
-     *
-     * @param League\UrbanDictionary\Word $word The word to be placed in the dictionary.
-     *
-     * @return void
-     */
-    public function insert(Word $word)
-    {
-        self::create($word->slang, $word->description, $word->sampleSentence);
+        return $_added;
     }
 
     /**
@@ -104,16 +96,20 @@ class Dictionary implements DictionaryInterface
      */
     public static function select($slang)
     {
+        $_selected = false;
+        self::$index = -1;
         if (! is_string($slang)) {
             throw new InvalidArgumentException('A string is expected as the argument. The argument is not a string.');
         }
-        self::$index = -1;
         $records = self::search($slang);
         if (count($records) > 0) {
             self::$index = key($records);
+            $_selected = true;
         } else {
             throw new InvalidArgumentException('The slang is not in the dictionary.');
         }
+
+        return $_selected;
     }
 
     /**
@@ -127,6 +123,7 @@ class Dictionary implements DictionaryInterface
      */
     public static function update($slang, $description, $sampleSentence)
     {
+        $_updated = false;
         if (! is_string($slang)) {
             throw new InvalidArgumentException('A string is expected as the first argument. The first argument is not a string.');
         }
@@ -141,7 +138,10 @@ class Dictionary implements DictionaryInterface
             self::$data[self::$index]['description'] = $description;
             self::$data[self::$index]['sample-sentence'] = $sampleSentence;
             self::$index = -1;
+            $_updated = true;
         }
+
+        return $_updated;
     }
 
     /**
@@ -153,15 +153,19 @@ class Dictionary implements DictionaryInterface
      */
     public static function delete($slang)
     {
+        $_deleted = false;
         if (! is_string($slang)) {
             throw new InvalidArgumentException('A string is expected as the argument. The argument is not a string.');
         }
         $records = self::search($slang);
         if (count($records) > 0) {
             array_splice(self::$data, key($records), 1);
+            $_deleted = true;
         } else {
             throw new InvalidArgumentException('The slang is not in the dictionary.');
         }
+
+        return $_deleted;
     }
 
     /**

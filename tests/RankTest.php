@@ -16,6 +16,5 @@ class RankTest extends \PHPUnit_Framework_TestCase
             $this->assertNotEquals(false, strripos($string, $key), 'Error: a key in the returned array is not contained in the string passed into WordRank::rank');
             $this->assertNotEquals(0, $value, 'Error: no element in the returned array should have a value of 0');
         }
-        #regex tests
     }
 }

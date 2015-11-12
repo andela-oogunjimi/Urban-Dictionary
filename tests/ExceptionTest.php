@@ -4,37 +4,36 @@ namespace League\UrbanDictionary\Test;
 
 use League\UrbanDictionary\Dictionary;
 use League\UrbanDictionary\Rank;
-use League\UrbanDictionary\Word;
 use stdClass;
 
 class ExceptionTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException Exception
+     * @expectedException InvalidArgumentException
      */
-    public function testDictionaryCreateSlangArgException()
+    public function testDictionaryAddSlangArgException()
     {
-        Dictionary::create(0, 'string', 'string');
+        Dictionary::add(0, 'string', 'string');
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException InvalidArgumentException
      */
-    public function testDictionaryCreateDescriptionArgException()
+    public function testDictionaryAddDescriptionArgException()
     {
-        Dictionary::create('string', new stdClass(), 'string');
+        Dictionary::add('string', new stdClass(), 'string');
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException InvalidArgumentException
      */
-    public function testDictionaryCreateSampleSentenceArgException()
+    public function testDictionaryAddSampleSentenceArgException()
     {
-        Dictionary::create('string', 'string', false);
+        Dictionary::add('string', 'string', false);
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException InvalidArgumentException
      */
     public function testDictionaryReadArgException()
     {
@@ -42,7 +41,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException InvalidArgumentException
      */
     public function testDictionarySelectArgException()
     {
@@ -50,7 +49,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException InvalidArgumentException
      */
     public function testDictionaryUpdateSlangArgException()
     {
@@ -58,7 +57,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException InvalidArgumentException
      */
     public function testDictionaryUpdateDescriptionArgException()
     {
@@ -66,7 +65,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException InvalidArgumentException
      */
     public function testDictionaryUpdateSampleSentenceArgException()
     {
@@ -74,7 +73,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException InvalidArgumentException
      */
     public function testDictionaryDeleteArgException()
     {
@@ -82,34 +81,10 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException InvalidArgumentException
      */
     public function testRankExecuteArgException()
     {
         Rank::execute(6);
-    }
-
-    /**
-     * @expectedException Exception
-     */
-    public function testWordConstructorSlangArgException()
-    {
-        $word = new Word(new Dictionary(), 0, 'string', 'string');
-    }
-
-    /**
-     * @expectedException Exception
-     */
-    public function testWordConstructorDescriptionArgException()
-    {
-        $word = new Word(new Dictionary(), 'string', new stdClass(), 'string');
-    }
-
-    /**
-     * @expectedException Exception
-     */
-    public function testWordConstructorSampleSentenceArgException()
-    {
-        $word = new Word(new Dictionary(), 'string', 'string', false);
     }
 }
