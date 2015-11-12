@@ -2,9 +2,9 @@
 
 namespace League\UrbanDictionary\Test;
 
-use League\UrbanDictionary\Dictionary;
-use League\UrbanDictionary\Rank;
 use stdClass;
+use League\UrbanDictionary\Rank;
+use League\UrbanDictionary\Dictionary;
 
 class ExceptionTest extends \PHPUnit_Framework_TestCase
 {
