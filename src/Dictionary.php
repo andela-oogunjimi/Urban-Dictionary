@@ -1,6 +1,6 @@
 <?php
 
-namespace League\UrbanDictionary;
+namespace Opeyemiabiodun\UrbanDictionary;
 
 use InvalidArgumentException;
 
@@ -11,14 +11,42 @@ class Dictionary
      *
      * @var array
      */
-    private static $data = [];
+    private $data = [];
 
     /**
      * $index The index of a particular selected slang in the dictionary.
      *
      * @var int
      */
-    private static $index = -1;
+    private $index = -1;
+
+    /**
+     * The variable to hold the only instance of Opeyemiabiodun\Dictionary
+     * @var null
+     */
+    private static $instance;
+
+    /**
+     * Private Constructor for Opeyemiabiodun\Dictionary
+     */
+    private function __construct()
+    {
+
+    }
+
+    /**
+     * This method returns the only avaliable instance of Opeyemiabiodun\Dictionary
+     * @return Opeyemiabiodun\Dictionary
+     */
+    public static function getInstance()
+    {
+        if (! self::$instance)
+        {
+            self::$instance = new Dictionary();
+        }
+
+        return self::$instance;
+    }  
 
     /**
      * This method finds a slang in the dictionary.
@@ -27,11 +55,11 @@ class Dictionary
      *
      * @return array The record(s) of slang in the dictionary.
      */
-    private static function search($slang)
+    private function search($slang)
     {
         $lowerCaseSlang = strtolower($slang);
 
-        return array_filter(self::$data, function ($value) use ($lowerCaseSlang) {
+        return array_filter($this->data, function ($value) use ($lowerCaseSlang) {
             return $value['slang'] == $lowerCaseSlang;
         });
     }
@@ -45,7 +73,7 @@ class Dictionary
      *
      * @return void
      */
-    public static function add($slang, $description, $sampleSentence)
+    public function add($slang, $description, $sampleSentence)
     {
         $_added = false;
         if (! is_string($slang)) {
@@ -60,7 +88,7 @@ class Dictionary
         if (count(self::search($slang)) > 0) {
             throw new InvalidArgumentException('The slang already exists in the dictionary.');
         } else {
-            array_push(self::$data, ['slang' => strtolower($slang), 'description' => $description, 'sample-sentence' => $sampleSentence]);
+            array_push($this->data, ['slang' => strtolower($slang), 'description' => $description, 'sample-sentence' => $sampleSentence]);
             $_added = true;
         }
 
@@ -74,7 +102,7 @@ class Dictionary
      *
      * @return array The record of the slang in the dictionary.
      */
-    public static function read($slang)
+    public function read($slang)
     {
         if (! is_string($slang)) {
             throw new InvalidArgumentException('A string is expected as the argument. The argument is not a string.');
@@ -94,16 +122,16 @@ class Dictionary
      *
      * @return void
      */
-    public static function select($slang)
+    public function select($slang)
     {
         $_selected = false;
-        self::$index = -1;
+        $this->index = -1;
         if (! is_string($slang)) {
             throw new InvalidArgumentException('A string is expected as the argument. The argument is not a string.');
         }
         $records = self::search($slang);
         if (count($records) > 0) {
-            self::$index = key($records);
+            $this->index = key($records);
             $_selected = true;
         } else {
             throw new InvalidArgumentException('The slang is not in the dictionary.');
@@ -121,7 +149,7 @@ class Dictionary
      *
      * @return void
      */
-    public static function update($slang, $description, $sampleSentence)
+    public function update($slang, $description, $sampleSentence)
     {
         $_updated = false;
         if (! is_string($slang)) {
@@ -133,11 +161,11 @@ class Dictionary
         if (! is_string($sampleSentence)) {
             throw new InvalidArgumentException('A string is expected as the third argument. The third argument is not a string.');
         }
-        if (array_key_exists(self::$index, self::$data)) {
-            self::$data[self::$index]['slang'] = strtolower($slang);
-            self::$data[self::$index]['description'] = $description;
-            self::$data[self::$index]['sample-sentence'] = $sampleSentence;
-            self::$index = -1;
+        if (array_key_exists($this->index, $this->data)) {
+            $this->data[$this->index]['slang'] = strtolower($slang);
+            $this->data[$this->index]['description'] = $description;
+            $this->data[$this->index]['sample-sentence'] = $sampleSentence;
+            $this->index = -1;
             $_updated = true;
         }
 
@@ -151,7 +179,7 @@ class Dictionary
      *
      * @return void
      */
-    public static function delete($slang)
+    public function delete($slang)
     {
         $_deleted = false;
         if (! is_string($slang)) {
@@ -159,7 +187,7 @@ class Dictionary
         }
         $records = self::search($slang);
         if (count($records) > 0) {
-            array_splice(self::$data, key($records), 1);
+            array_splice($this->data, key($records), 1);
             $_deleted = true;
         } else {
             throw new InvalidArgumentException('The slang is not in the dictionary.');
@@ -173,9 +201,9 @@ class Dictionary
      *
      * @return array A two-dimensional array serving as a dictionary of slangs.
      */
-    public static function getAll()
+    public function getAll()
     {
-        return self::$data;
+        return $this->data;
     }
 
     /**
@@ -183,9 +211,9 @@ class Dictionary
      *
      * @return void
      */
-    public static function clear()
+    public function clear()
     {
-        self::$data = [];
-        self::$index = -1;
-    }
+        $this->data = [];
+        $this->index = -1;
+    } 
 }

@@ -1,15 +1,15 @@
 <?php
 
-namespace League\UrbanDictionary\Test;
+namespace Opeyemiabiodun\UrbanDictionary\Test;
 
-use League\UrbanDictionary\Rank;
+use Opeyemiabiodun\UrbanDictionary\Rank;
 
 class RankTest extends \PHPUnit_Framework_TestCase
 {
     public function testExecute()
     {
         $string = "Andrei: Prosper, Have you finished the curriculum?.\nProsper: Yes.\nAndrei: Tight, Tight, Tight!!!";
-        $result = Rank::execute($string);
+        $result = Rank::getInstance()->execute($string);
 
         $this->assertTrue(is_array($result), "Error: 'WordRank::rank' should return an array.");
         $this->assertEquals(str_word_count($string), array_sum($result), 'Error: the number of words in the string must equal the sum of the values in the returned array');

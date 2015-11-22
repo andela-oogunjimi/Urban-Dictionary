@@ -1,8 +1,8 @@
 {
-    "name": "codesoft/urban-dictionary",
+    "name": "opeyemiabiodun/urban-dictionary",
     "description": "Make your dictionary of slangs.",
     "keywords": [
-        "codesoft",
+        "opeyemiabiodun",
         "urban-dictionary"
     ],
     "homepage": "https://github.com/andela-oogunjimi/urban-dictionary",
@@ -22,12 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "League\\UrbanDictionary\\":"src"
+            "Opeyemiabiodun\\UrbanDictionary\\":"src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "League\\UrbanDictionary\\Tests\\":"tests"
+            "Opeyemiabiodun\\UrbanDictionary\\Tests\\":"tests"
         }
     },
     "scripts": {

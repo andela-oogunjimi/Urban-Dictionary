@@ -1,6 +1,6 @@
 # Urban-Dictionary
 
-[![Latest Version on Packagist](https://img.shields.io/badge/packagist-v1.0.0-orange.svg)](https://packagist.org/packages/codesoft/urban-dictionary)
+[![Latest Version on Packagist](https://img.shields.io/badge/packagist-v1.0.0-orange.svg)](https://packagist.org/packages/Opeyemiabiodun/urban-dictionary)
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status](https://travis-ci.org/andela-oogunjimi/Urban-Dictionary.svg?branch=master)](https://travis-ci.org/andela-oogunjimi/Urban-Dictionary)
 [![Code Coverage](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/?branch=master)
@@ -14,7 +14,7 @@ The package enables the non-persistent storage of data. Specifically; slangs, th
 Via Composer
 
 ``` bash
-$ composer require league/Urban-Dictionary
+$ composer require opeyemiabiodun/urban-dictionary
 ```
 
 ## Usage
@@ -23,32 +23,32 @@ $ composer require league/Urban-Dictionary
 <?php
     require "vendor/autoload.php";
 
-    use League/UrbanDictionary/Dictionary;
-    use League/UrbanDictionary/Rank;
+    use Opeyemiabiodun/UrbanDictionary/Dictionary;
+    use Opeyemiabiodun/UrbanDictionary/Rank;
 
     /*
      The following methods below perform CRUD operations in the dictionary.
      The arguments passed into the methods are strings.
     */
-    Dictionary::add($slang, $description, $sampleSentence);
-    Dictionary::read($slang);
-    Dictionary::select($slang);
-    Dictionary::update($slang, $description, $sampleSentence);
-    Dictionary::delete($slang);
-    Dictionary::getAll();
-    Dictionary::clear();
+    Dictionary::getInstance()->add($slang, $description, $sampleSentence);
+    Dictionary::getInstance()->read($slang);
+    Dictionary::getInstance()->select($slang);
+    Dictionary::getInstance()->update($slang, $description, $sampleSentence);
+    Dictionary::getInstance()->delete($slang);
+    Dictionary::getInstance()->getAll();
+    Dictionary::getInstance()->clear();
 
     /*
       To update a slang in the dictionary.First select it before passing in updated values.
      */
-    Dictionary::select($slang);
-    Dictionary::update($slang, $description, $sampleSentence);
+    Dictionary::getInstance()->select($slang);
+    Dictionary::getInstance()->update($slang, $description, $sampleSentence);
 
     $_sentences = “Andrei: Prosper, Have you finished the curriculum?.
                   Prosper: Yes.
                   Andrei: Tight, Tight, Tight!!!”
 
-    $wordsRank = Rank::execute($_sentences);
+    $wordsRank = Rank::getInstance()->execute($_sentences);
     /*
      $wordsRank = [“Tight” => 3, “Prosper” => 2, “Yes” => 1, “Have” => 1, “you” => 1,
                     “finished” => 1, “the” => 1, “curriculum?” => 1];
@@ -83,17 +83,17 @@ If you discover any security related issues, please email opeyemi.ogunjimi@andel
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/league/Urban-Dictionary.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/opeyemiabiodun/urban-dictionary.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/thephpleague/Urban-Dictionary/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/thephpleague/Urban-Dictionary.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/thephpleague/Urban-Dictionary.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/league/Urban-Dictionary.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/thephpleague/urban-dictionary/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/thephpleague/urban-dictionary.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/thephpleague/urban-dictionary.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/opeyemiabiodun/urban-dictionary.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/league/Urban-Dictionary
-[link-travis]: https://travis-ci.org/thephpleague/Urban-Dictionary
-[link-scrutinizer]: https://scrutinizer-ci.com/g/thephpleague/Urban-Dictionary/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/thephpleague/Urban-Dictionary
-[link-downloads]: https://packagist.org/packages/league/Urban-Dictionary
-[link-author]: https://github.com/opeyemiabiodun
+[link-packagist]: https://packagist.org/packages/opeyemiabiodun/urban-dictionary
+[link-travis]: https://travis-ci.org/thephpleague/urban-dictionary
+[link-scrutinizer]: https://scrutinizer-ci.com/g/thephpleague/urban-dictionary/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/thephpleague/urban-dictionary
+[link-downloads]: https://packagist.org/packages/opeyemiabiodun/urban-dictionary
+[link-author]: https://github.com/andela-oogunjimi
 [link-contributors]: ../../contributors
