@@ -57,7 +57,7 @@ class Dictionary
     {
         $lowerCaseSlang = strtolower($slang);
 
-        return array_filter($this->data, function($value) use ($lowerCaseSlang) {
+        return array_filter($this->data, function ($value) use ($lowerCaseSlang) {
             return $value['slang'] == $lowerCaseSlang;
         });
     }
@@ -69,7 +69,7 @@ class Dictionary
      * @param string $description    The description of the slang.
      * @param string $sampleSentence Sentence examples where the slang is used.
      *
-     * @return boolean
+     * @return bool
      */
     public function add($slang, $description, $sampleSentence)
     {
@@ -118,7 +118,7 @@ class Dictionary
      *
      * @param string $slang The slang to be updated in the dictionary.
      *
-     * @return boolean
+     * @return bool
      */
     public function select($slang)
     {
@@ -145,7 +145,7 @@ class Dictionary
      * @param string $description    An update to the description in the dictionary.
      * @param string $sampleSentence An update to the sample sentences in the dictionary.
      *
-     * @return boolean
+     * @return bool
      */
     public function update($slang, $description, $sampleSentence)
     {
@@ -175,7 +175,7 @@ class Dictionary
      *
      * @param string $slang The slang to be removed from the dictionary
      *
-     * @return boolean
+     * @return bool
      */
     public function delete($slang)
     {
