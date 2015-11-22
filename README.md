@@ -1,6 +1,6 @@
 # Urban-Dictionary
 
-[![Latest Version on Packagist](https://img.shields.io/badge/packagist-v1.0.0-orange.svg)](https://packagist.org/packages/Opeyemiabiodun/urban-dictionary)
+[![Latest Version on Packagist](https://img.shields.io/badge/packagist-v1.0.0-orange.svg)](https://packagist.org/packages/opeyemiabiodun/urban-dictionary)
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status](https://travis-ci.org/andela-oogunjimi/Urban-Dictionary.svg?branch=master)](https://travis-ci.org/andela-oogunjimi/Urban-Dictionary)
 [![Code Coverage](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/andela-oogunjimi/Urban-Dictionary/?branch=master)

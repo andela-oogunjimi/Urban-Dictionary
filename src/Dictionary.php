@@ -21,32 +21,30 @@ class Dictionary
     private $index = -1;
 
     /**
-     * The variable to hold the only instance of Opeyemiabiodun\Dictionary
+     * The variable to hold the only instance of Opeyemiabiodun\UrbanDictionary\Dictionary.
      * @var null
      */
     private static $instance;
 
     /**
-     * Private Constructor for Opeyemiabiodun\Dictionary
+     * Private Constructor for Opeyemiabiodun\UrbanDictionary\Dictionary.
      */
     private function __construct()
     {
-
     }
 
     /**
-     * This method returns the only avaliable instance of Opeyemiabiodun\Dictionary
-     * @return Opeyemiabiodun\Dictionary
+     * This method returns the only avaliable instance of Opeyemiabiodun\UrbanDictionary\Dictionary.
+     * @return Opeyemiabiodun\UrbanDictionary\Dictionary
      */
     public static function getInstance()
     {
-        if (! self::$instance)
-        {
-            self::$instance = new Dictionary();
+        if (! self::$instance) {
+            self::$instance = new self();
         }
 
         return self::$instance;
-    }  
+    }
 
     /**
      * This method finds a slang in the dictionary.
@@ -59,7 +57,7 @@ class Dictionary
     {
         $lowerCaseSlang = strtolower($slang);
 
-        return array_filter($this->data, function ($value) use ($lowerCaseSlang) {
+        return array_filter($this->data, function($value) use ($lowerCaseSlang) {
             return $value['slang'] == $lowerCaseSlang;
         });
     }
@@ -71,7 +69,7 @@ class Dictionary
      * @param string $description    The description of the slang.
      * @param string $sampleSentence Sentence examples where the slang is used.
      *
-     * @return void
+     * @return boolean
      */
     public function add($slang, $description, $sampleSentence)
     {
@@ -120,7 +118,7 @@ class Dictionary
      *
      * @param string $slang The slang to be updated in the dictionary.
      *
-     * @return void
+     * @return boolean
      */
     public function select($slang)
     {
@@ -147,7 +145,7 @@ class Dictionary
      * @param string $description    An update to the description in the dictionary.
      * @param string $sampleSentence An update to the sample sentences in the dictionary.
      *
-     * @return void
+     * @return boolean
      */
     public function update($slang, $description, $sampleSentence)
     {
@@ -177,7 +175,7 @@ class Dictionary
      *
      * @param string $slang The slang to be removed from the dictionary
      *
-     * @return void
+     * @return boolean
      */
     public function delete($slang)
     {
@@ -215,5 +213,5 @@ class Dictionary
     {
         $this->data = [];
         $this->index = -1;
-    } 
+    }
 }
