@@ -1,8 +1,15 @@
 {
+<<<<<<< HEAD
     "name": "league/urban-dictionary",
     "description": "Make your dictionary of slangs.",
     "keywords": [
         "league",
+=======
+    "name": "opeyemiabiodun/urban-dictionary",
+    "description": "Make your dictionary of slangs.",
+    "keywords": [
+        "opeyemiabiodun",
+>>>>>>> 5d4bb22... Change the design
         "urban-dictionary"
     ],
     "homepage": "https://github.com/andela-oogunjimi/Urban-Dictionary",
@@ -22,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "League\\UrbanDictionary\\":"src"
+            "Opeyemiabiodun\\UrbanDictionary\\":"src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "League\\UrbanDictionary\\Tests\\":"tests"
+            "Opeyemiabiodun\\UrbanDictionary\\Tests\\":"tests"
         }
     },
     "scripts": {

@@ -1,10 +1,10 @@
 <?php
 
-namespace League\UrbanDictionary\Test;
+namespace Opeyemiabiodun\UrbanDictionary\Test;
 
 use stdClass;
-use League\UrbanDictionary\Rank;
-use League\UrbanDictionary\Dictionary;
+use Opeyemiabiodun\UrbanDictionary\Rank;
+use Opeyemiabiodun\UrbanDictionary\Dictionary;
 
 class ExceptionTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +13,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryAddSlangArgException()
     {
-        Dictionary::add(0, 'string', 'string');
+        Dictionary::getInstance()->add(0, 'string', 'string');
     }
 
     /**
@@ -21,7 +21,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryAddDescriptionArgException()
     {
-        Dictionary::add('string', new stdClass(), 'string');
+        Dictionary::getInstance()->add('string', new stdClass(), 'string');
     }
 
     /**
@@ -29,7 +29,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryAddSampleSentenceArgException()
     {
-        Dictionary::add('string', 'string', false);
+        Dictionary::getInstance()->add('string', 'string', false);
     }
 
     /**
@@ -37,7 +37,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryReadArgException()
     {
-        Dictionary::read(false);
+        Dictionary::getInstance()->read(false);
     }
 
     /**
@@ -45,7 +45,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionarySelectArgException()
     {
-        Dictionary::select(false);
+        Dictionary::getInstance()->select(false);
     }
 
     /**
@@ -53,7 +53,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryUpdateSlangArgException()
     {
-        Dictionary::update(0, 'string', 'string');
+        Dictionary::getInstance()->update(0, 'string', 'string');
     }
 
     /**
@@ -61,7 +61,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryUpdateDescriptionArgException()
     {
-        Dictionary::update('string', new stdClass(), 'string');
+        Dictionary::getInstance()->update('string', new stdClass(), 'string');
     }
 
     /**
@@ -69,7 +69,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryUpdateSampleSentenceArgException()
     {
-        Dictionary::update('string', 'string', false);
+        Dictionary::getInstance()->update('string', 'string', false);
     }
 
     /**
@@ -77,7 +77,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDictionaryDeleteArgException()
     {
-        Dictionary::delete(new stdClass());
+        Dictionary::getInstance()->delete(new stdClass());
     }
 
     /**
@@ -85,6 +85,6 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testRankExecuteArgException()
     {
-        Rank::execute(6);
+        Rank::getInstance()->execute(6);
     }
 }
