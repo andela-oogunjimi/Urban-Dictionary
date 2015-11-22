@@ -7,32 +7,30 @@ use InvalidArgumentException;
 class Rank
 {
     /**
-     * The variable to hold the only instance of Opeyemiabiodun\Rank
+     * The variable to hold the only instance of Opeyemiabiodun\Rank.
      * @var null
      */
     private static $instance;
 
     /**
-     * Private Constructor for Opeyemiabiodun\Rank
+     * Private Constructor for Opeyemiabiodun\Rank.
      */
     private function __construct()
     {
-
     }
 
     /**
-     * This method returns the only avaliable instance of Opeyemiabiodun\Rank
+     * This method returns the only avaliable instance of Opeyemiabiodun\Rank.
      * @return Opeyemiabiodun\Dictionary
      */
     public static function getInstance()
     {
-        if (! self::$instance)
-        {
-            self::$instance = new Rank();
+        if (! self::$instance) {
+            self::$instance = new self();
         }
 
         return self::$instance;
-    }  
+    }
 
     /**
      * This method ranks the words in sentences by the number of times the words occur in these sentences.

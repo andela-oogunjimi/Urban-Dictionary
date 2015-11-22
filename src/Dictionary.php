@@ -21,32 +21,30 @@ class Dictionary
     private $index = -1;
 
     /**
-     * The variable to hold the only instance of Opeyemiabiodun\Dictionary
+     * The variable to hold the only instance of Opeyemiabiodun\Dictionary.
      * @var null
      */
     private static $instance;
 
     /**
-     * Private Constructor for Opeyemiabiodun\Dictionary
+     * Private Constructor for Opeyemiabiodun\Dictionary.
      */
     private function __construct()
     {
-
     }
 
     /**
-     * This method returns the only avaliable instance of Opeyemiabiodun\Dictionary
+     * This method returns the only avaliable instance of Opeyemiabiodun\Dictionary.
      * @return Opeyemiabiodun\Dictionary
      */
     public static function getInstance()
     {
-        if (! self::$instance)
-        {
-            self::$instance = new Dictionary();
+        if (! self::$instance) {
+            self::$instance = new self();
         }
 
         return self::$instance;
-    }  
+    }
 
     /**
      * This method finds a slang in the dictionary.
@@ -215,5 +213,5 @@ class Dictionary
     {
         $this->data = [];
         $this->index = -1;
-    } 
+    }
 }
